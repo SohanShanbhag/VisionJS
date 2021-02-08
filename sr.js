@@ -1,4 +1,4 @@
-var mcImage, mc
+var mcImage, mc, cx, cy
 function preload(){
   mcImage = loadImage("mc.gif")
 }
@@ -52,9 +52,9 @@ function showCoordinates(event) {
 }
 function draw(){
   function showCoordinates(event) {
-    var cx = event.touches[0].clientX;
-    var cy = event.touches[0].clientY;
-  }
+  cx = event.touches[0].clientX;
+  cy = event.touches[0].clientY;
+}
   if(mousePressedOver(mc) || cx === mc.x && cy === mc.y){
     listen();
   }
