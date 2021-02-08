@@ -46,9 +46,16 @@ if ("speechSynthesis" in window) {
   }
 }
 
+function showCoordinates(event) {
+  var cx = event.touches[0].clientX;
+  var cy = event.touches[0].clientY;
+}
 function draw(){
-
-  if(mousePressedOver(mc) || touches[0].clientX === mc.x && touches[0].clientY === mc.y){
+  function showCoordinates(event) {
+    var cx = event.touches[0].clientX;
+    var cy = event.touches[0].clientY;
+  }
+  if(mousePressedOver(mc) || cx === mc.x && cy === mc.y){
     listen();
   }
 
