@@ -48,7 +48,7 @@ if ("speechSynthesis" in window) {
 
 function draw(){
 
-  if(mousePressedOver(mc) || touches.x === mc.x && touches.y === mc.y){
+  if(mousePressedOver(mc) || touches[0].clientX === mc.x && touches[0].clientY === mc.y){
     listen();
   }
 
