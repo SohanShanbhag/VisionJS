@@ -223,17 +223,17 @@ function listen(){
 
 
 function draw(){
-  if(mousePressedOver(mc) || transcript1 === "hey vision" || transcript1 === "ok vision"){
+  for(var i = 0; i < touches.length; i ++){
+    cx = touches[i].x;
+    cy = touches[i].y;
+  }
+
+  console.log(touches.length)
+
+  if(mousePressedOver(mc) || cx === mc.x && cy === mc.y){
     background("yellow")
     listen();
   };
 
  drawSprites();
 };
-
-function touchStarted(){
-  if(mouseX === mc.x && mouseY === mc.y){
-    background("yellow")
-    listen();
-  }
-}
