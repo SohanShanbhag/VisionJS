@@ -228,9 +228,13 @@ function draw(){
     cy = touches[i].y;
   }
 
-  console.log(touches.length)
+  console.log(width, height)
 
-  if(mousePressedOver(mc) || cx === mc.x && cy === mc.y){
+  console.log(mc.x, mc.y)
+
+  console.log(cx, cy)
+
+  if(mousePressedOver(mc) || cx > 426 && cx < 617 && cy > 1125 && cy < 1316){
     background("yellow")
     listen();
   };
