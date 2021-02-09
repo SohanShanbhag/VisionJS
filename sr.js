@@ -1,4 +1,4 @@
-var mcImage, mc, cx, cy,transcript, dots, dot, logoimg
+var mcImage, mc, cx, cy,transcript, dots, dot, logoimg, database, user, userName;
 function preload(){
   mcImage = loadImage("mc.gif");
   dot = loadImage("dot7.png");
@@ -7,8 +7,8 @@ function preload(){
 };
 
 function setup(){
-  
   canvas = createCanvas(windowWidth-20,windowHeight-20);
+  database = firebase.database();
   background("yellow")
   mc = createSprite(width/2 - 45,height/2 + 50);
   mc.addImage(mcImage);
@@ -16,7 +16,9 @@ function setup(){
   fill("black");
   textStyle(BOLD)
   image(logoimg, width/2 - 250, 0);
-  
+
+  getTheName = new Name();
+  getTheName.start();
 };
 
 function listen(){
@@ -85,7 +87,7 @@ function listen(){
         response.lang = 'en';
         window.speechSynthesis.speak(response);
         text("Me: " + response.text, width/2, height/2 + 300);
-        window.open("https://www.google.com", "_blank");
+        window.open("https://www.youtube.com", "_blank");
       };
 
       if("open Gmail" === transcript){
@@ -142,6 +144,50 @@ function listen(){
         text("Me: " + response.text, width/2, height/2 + 300);
       }
 
+      if("what is my name" === transcript){
+        if(userName === ""){
+          response.rate = 1;
+          response.text = "I don't know your name yet. Speak - 'Change name' - into the micrphone.";
+          response.lang = 'en';
+          window.speechSynthesis.speak(response);
+          text("Me: " + response.text, width/2, height/2 + 300);
+        }
+
+        else{
+          response.rate = 1;
+          response.text = "Your name is " + userName;
+          response.lang = 'en';
+          window.speechSynthesis.speak(response);
+          text("Me: " + response.text, width/2, height/2 + 300);
+        }
+      }
+
+      // if("change name" === transcript){
+      //   response.rate = 1;
+      //   response.text = "What would you like to change your name to?";
+      //   response.lang = 'en';
+      //   window.speechSynthesis.speak(response);
+      //   text("Me: " + response.text, width/2, height/2 + 300);
+
+      //   // new speech recognition object
+      //   recognition = new window.webkitSpeechRecognition();
+
+      //   // This will run when the speech recognition service returns a result
+      //   recognition.onstart = function() {
+      //   console.log("Voice recognition started. Try speaking into the microphone.");
+      //   };
+
+      //   recognition.onresult = function(event1) {
+      //     var transcript1 = event1.results[0][0].transcript1;
+      //     console.log(transcript1);
+      //   };
+
+      //   // start recognition
+      //   recognition.start();
+
+      //   getTheName.changeName(transcript1);
+      // }
+
       mc.addImage(mcImage);
       mc.x = width/2 - 45
       // mc.y = height/2 - 100
@@ -170,7 +216,6 @@ function listen(){
 // }
 
 function draw(){
-
   if(mousePressedOver(mc)){
     background("yellow")
     listen();

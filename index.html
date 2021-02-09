@@ -9,8 +9,33 @@
 
     <script src="p5.play.js"></script>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAgHOfT7SfAMt1SyuyIoIFTwaUjoohY7aE",
+      authDomain: "gitvision.firebaseapp.com",
+      databaseURL: "https://gitvision-default-rtdb.firebaseio.com",
+      projectId: "gitvision",
+      storageBucket: "gitvision.appspot.com",
+      messagingSenderId: "988072280690",
+      appId: "1:988072280690:web:e498f022c73900c20778eb"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
+
     <link rel="stylesheet" type="text/css" href="style.css"/>
   </head>
+
+  <script src="update.js"></script>
+  <script src="getTheName.js"></script>
   <body>
     <script src="sr.js"></script>
   </body>
