@@ -1,4 +1,4 @@
-var mcImage, mc, cx, cy,transcript, dots, dot, logoimg, database, user, userName;
+var mcImage, mc, cx, cy,transcript, transcript1, dots, dot, logoimg, database, user, userName;
 function preload(){
   mcImage = loadImage("mc.gif");
   dot = loadImage("dot7.png");
@@ -17,8 +17,30 @@ function setup(){
   textStyle(BOLD)
   image(logoimg, width/2 - 250, 0);
 
-  getTheName = new Name();
-  getTheName.start();
+  // getTheName = new Name();
+  // getTheName.start();
+
+  // var recognition1 = new window.webkitSpeechRecognition();
+
+  // recognition1.onstart = function() {
+  //   console.log("Voice recognition started. Try speaking into the microphone.");
+  // };
+
+  // recognition1.onresult = function(think) {
+  //   var transcript1 = think.results[0][0].transcript;
+  //   console.log(transcript1);
+
+  //   textSize(30);
+  //   textStyle(BOLD);
+  //   fill("black");
+  //   textFont("Sans-serif");
+  //   textAlign(CENTER);
+  //   if(transcript1 === "hai"){
+  //     transcript1 = "hi";
+  //   };
+  // }
+
+  // recognition1.start();
 };
 
 function listen(){
@@ -48,7 +70,7 @@ function listen(){
 
       const response = new SpeechSynthesisUtterance();
       
-      if("hi" === transcript || "hello" === transcript || "hey there" === transcript){
+      if(/*"hi" === transcript || "hello" === transcript || "hey there" === transcript*/transcript.includes("hello") === true || transcript.includes("hi") === true || transcript.includes("hey") === true){
         response.rate = 1;
         response.text = "Hey there!";
         response.lang = 'en';
@@ -56,7 +78,7 @@ function listen(){
         text("Me: " + response.text, width/2, height/2 + 300);
       };
 
-      if("what can you do" === transcript){
+      if(/*"what can you do" === transcript*/transcript.includes("what can you do") === true){
         response.rate = 1;
         response.text = "I can open browsers, search, and help you comfortably control your computer.";
         response.lang = 'en';
@@ -64,7 +86,7 @@ function listen(){
         text("Me: " + response.text, width/2, height/2 + 300);
       };
 
-      if("what is your name" === transcript){
+      if(/*what is your name" === transcript*/transcript.includes("what is your name") === true){
         response.rate = 1;
         response.text = "Vision is my name, helping you is my game!";
         response.lang = 'en';
@@ -72,7 +94,7 @@ function listen(){
         text("Me: " + response.text, width/2, height/2 + 300);
       };
 
-      if("open Google" === transcript){
+      if(/*"open Google" === transcript*/transcript.includes("open Google") === true){
         response.rate = 1;
         response.text = "Sure thing, opening Google";
         response.lang = 'en';
@@ -81,25 +103,34 @@ function listen(){
         window.open("https://www.google.com", "_blank");
       };
 
-      if("open YouTube" === transcript){
+      if(/*"open YouTube" === transcript*/transcript.includes("open YouTube") === true){
         response.rate = 1;
-        response.text = "Sure thing, opening Google";
+        response.text = "Sure thing, opening YouTube";
         response.lang = 'en';
         window.speechSynthesis.speak(response);
         text("Me: " + response.text, width/2, height/2 + 300);
         window.open("https://www.youtube.com", "_blank");
       };
 
-      if("open Gmail" === transcript){
-        response.rate = 1;
-        response.text = "Sure thing, opening Google";
-        response.lang = 'en';
-        window.speechSynthesis.speak(response);
-        text("Me: " + response.text, width/2, height/2 + 300);
-        window.open("https://www.gmail.com", "_blank");
-      };
+      // if("open Gmail" === transcript){
+      //   response.rate = 1;
+      //   response.text = "Sure thing, opening Gmail";
+      //   response.lang = 'en';
+      //   window.speechSynthesis.speak(response);
+      //   text("Me: " + response.text, width/2, height/2 + 300);
+      //   window.open("https://www.gmail.com", "_blank");
+      // };
 
-      if("date" === transcript || "what is the date" === transcript || "what is today's date" === transcript){
+      // if(transcript.includes("my name is") === true){
+      //   sliced = transcript.split("my name is ")
+      //   const newResponse = new SpeechSynthesisUtterance();
+      //   newResponse.rate = 1;
+      //   newResponse.text = "Ok, I have changed your name to " + sliced;
+      //   window.speechSynthesis.speak(newResponse);
+      //   getTheName.changeName(sliced)
+      // }
+
+      if(/*"date" === transcript || "what is the date" === transcript || "what is today's date" === transcript*/transcript.includes("date") === true || transcript.includes("what is the date") === true){
         var today = new Date();
         var date = (today.getDate())+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
         response.rate = 1;
@@ -109,7 +140,7 @@ function listen(){
         text("Me: " + response.text, width/2, height/2 + 300);
       };
 
-      if("time" === transcript || "what is the time" === transcript){
+      if(/*"time" === transcript || "what is the time" === transcript*/transcript.includes("time") === true || transcript.includes("what is the time") === true){
         var today = new Date();
         var timeText = today.getHours() + ":" + today.getMinutes();
         var time = today.getHours() + ":" + today.getMinutes();
@@ -120,7 +151,7 @@ function listen(){
         text("Me: " + timeText, width/2, height/2 + 300);
       }
 
-      if("great" === transcript || "thank you" === transcript){
+      if(/*"great" === transcript || "thank you" === transcript*/transcript.includes("great") === true || transcript.includes("thank you") === true){
         response.rate = 1;
         response.text = "Glad to see you are happy and got help!";
         response.lang = 'en';
@@ -128,7 +159,7 @@ function listen(){
         text("Me: " + response.text, width/2, height/2 + 300);
       }
 
-      if("how are you" === transcript || "how are you feeling" === transcript){
+      if(/*"how are you" === transcript || "how are you feeling" === transcript*/transcript.includes("how are you") === true){
         response.rate = 1;
         response.text = "I am great, thank you. What about you?";
         response.lang = 'en';
@@ -136,56 +167,30 @@ function listen(){
         text("Me: " + response.text, width/2, height/2 + 300);
       }
 
-      if("i am good too" === transcript || "i am great too" === transcript || "i am feeling good too" === transcript){
+      if(/*"i am good too" === transcript || "i am great too" === transcript || "i am feeling good too" === transcript*/transcript.includes("i am good") === true || transcript.includes("i am great") === true){
         response.rate = 1;
-        response.text = "Great! How can I help you?";
+        response.text = "Great. What can I do for you?";
         response.lang = 'en';
         window.speechSynthesis.speak(response);
         text("Me: " + response.text, width/2, height/2 + 300);
       }
 
-      if("what is my name" === transcript){
-        if(userName === ""){
-          response.rate = 1;
-          response.text = "I don't know your name yet. Speak - 'Change name' - into the micrphone.";
-          response.lang = 'en';
-          window.speechSynthesis.speak(response);
-          text("Me: " + response.text, width/2, height/2 + 300);
-        }
+      // if(/*"what is my name" === transcript*/transcript.includes("what is my name") === true || transcript.includes("can you tell me what my name is") === true){
+      //   if(userName === ""){
+      //     response.rate = 1;
+      //     response.text = "I don't know your name yet. Speak - 'Change my name' - into the micrphone.";
+      //     response.lang = 'en';
+      //     window.speechSynthesis.speak(response);
+      //     text("Me: " + response.text, width/2, height/2 + 300);
+      //   }
 
-        else{
-          response.rate = 1;
-          response.text = "Your name is " + userName;
-          response.lang = 'en';
-          window.speechSynthesis.speak(response);
-          text("Me: " + response.text, width/2, height/2 + 300);
-        }
-      }
-
-      // if("change name" === transcript){
-      //   response.rate = 1;
-      //   response.text = "What would you like to change your name to?";
-      //   response.lang = 'en';
-      //   window.speechSynthesis.speak(response);
-      //   text("Me: " + response.text, width/2, height/2 + 300);
-
-      //   // new speech recognition object
-      //   recognition = new window.webkitSpeechRecognition();
-
-      //   // This will run when the speech recognition service returns a result
-      //   recognition.onstart = function() {
-      //   console.log("Voice recognition started. Try speaking into the microphone.");
-      //   };
-
-      //   recognition.onresult = function(event1) {
-      //     var transcript1 = event1.results[0][0].transcript1;
-      //     console.log(transcript1);
-      //   };
-
-      //   // start recognition
-      //   recognition.start();
-
-      //   getTheName.changeName(transcript1);
+      //   else{
+      //     response.rate = 1;
+      //     response.text = "Your name is " + userName;
+      //     response.lang = 'en';
+      //     window.speechSynthesis.speak(response);
+      //     text("Me: " + response.text, width/2, height/2 + 300);
+      //   }
       // }
 
       mc.addImage(mcImage);
@@ -215,11 +220,20 @@ function listen(){
 //   window.speechSynthesis.speak(response1);
 // }
 
+
+
 function draw(){
-  if(mousePressedOver(mc)){
+  if(mousePressedOver(mc) || transcript1 === "hey vision" || transcript1 === "ok vision"){
     background("yellow")
     listen();
   };
 
  drawSprites();
 };
+
+function touchStarted(){
+  if(mouseX === mc.x && mouseY === mc.y){
+    background("yellow")
+    listen();
+  }
+}
