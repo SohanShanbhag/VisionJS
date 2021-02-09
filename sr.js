@@ -117,6 +117,31 @@ function listen(){
         window.speechSynthesis.speak(response);
         text("Me: " + timeText, width/2, height/2 + 300);
       }
+
+      if("great" === transcript || "thank you" === transcript){
+        response.rate = 1;
+        response.text = "Glad to see you are happy and got help!";
+        response.lang = 'en';
+        window.speechSynthesis.speak(response);
+        text("Me: " + response.text, width/2, height/2 + 300);
+      }
+
+      if("how are you" === transcript || "how are you feeling" === transcript){
+        response.rate = 1;
+        response.text = "I am great, thank you. What about you?";
+        response.lang = 'en';
+        window.speechSynthesis.speak(response);
+        text("Me: " + response.text, width/2, height/2 + 300);
+      }
+
+      if("i am good too" === transcript || "i am great too" === transcript || "i am feeling good too" === transcript){
+        response.rate = 1;
+        response.text = "Great! How can I help you?";
+        response.lang = 'en';
+        window.speechSynthesis.speak(response);
+        text("Me: " + response.text, width/2, height/2 + 300);
+      }
+
       mc.addImage(mcImage);
       mc.x = width/2 - 45
       // mc.y = height/2 - 100
