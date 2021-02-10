@@ -184,24 +184,10 @@ function draw(){
 
   console.log(cx, cy)
 
-<<<<<<< HEAD
   if(mousePressedOver(mc)){
     background("yellow")
     listen();
   };
-=======
-  // if(mousePressedOver(mc)){
-  //   background("yellow")
-  //   listen();
-  // };
->>>>>>> 4c208d3e9bcd47a7940d1831aa87efd1f67cd9ff
 
  drawSprites();
 };
-
-function touchStarted(){
-  if(mousePressedOver(mc)){
-    background("yellow")
-    listen();
-  }
-}
