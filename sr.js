@@ -112,24 +112,6 @@ function listen(){
         window.open("https://www.youtube.com", "_blank");
       };
 
-      // if("open Gmail" === transcript){
-      //   response.rate = 1;
-      //   response.text = "Sure thing, opening Gmail";
-      //   response.lang = 'en';
-      //   window.speechSynthesis.speak(response);
-      //   text("Me: " + response.text, width/2, height/2 + 300);
-      //   window.open("https://www.gmail.com", "_blank");
-      // };
-
-      // if(transcript.includes("my name is") === true){
-      //   sliced = transcript.split("my name is ")
-      //   const newResponse = new SpeechSynthesisUtterance();
-      //   newResponse.rate = 1;
-      //   newResponse.text = "Ok, I have changed your name to " + sliced;
-      //   window.speechSynthesis.speak(newResponse);
-      //   getTheName.changeName(sliced)
-      // }
-
       if(/*"date" === transcript || "what is the date" === transcript || "what is today's date" === transcript*/transcript.includes("date") === true || transcript.includes("what is the date") === true){
         var today = new Date();
         var date = (today.getDate())+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
@@ -173,29 +155,10 @@ function listen(){
         response.lang = 'en';
         window.speechSynthesis.speak(response);
         text("Me: " + response.text, width/2, height/2 + 300);
-      }
-
-      // if(/*"what is my name" === transcript*/transcript.includes("what is my name") === true || transcript.includes("can you tell me what my name is") === true){
-      //   if(userName === ""){
-      //     response.rate = 1;
-      //     response.text = "I don't know your name yet. Speak - 'Change my name' - into the micrphone.";
-      //     response.lang = 'en';
-      //     window.speechSynthesis.speak(response);
-      //     text("Me: " + response.text, width/2, height/2 + 300);
-      //   }
-
-      //   else{
-      //     response.rate = 1;
-      //     response.text = "Your name is " + userName;
-      //     response.lang = 'en';
-      //     window.speechSynthesis.speak(response);
-      //     text("Me: " + response.text, width/2, height/2 + 300);
-      //   }
-      // }
+      };
 
       mc.addImage(mcImage);
       mc.x = width/2 - 45
-      // mc.y = height/2 - 100
     };
 
     // start recognition
@@ -209,19 +172,6 @@ function listen(){
   };
 };
 
-// function changeImg(){
-//   mc.addImage(mcImage);
-//   mc.x = width/2 - 45;
-
-//   const response1 = new SpeechSynthesisUtterance();
-//   response1.rate = 1;
-//   response1.text = "I'm sorry, but I did not here anything. Try speaking again.";
-//   response1.lang = 'en';
-//   window.speechSynthesis.speak(response1);
-// }
-
-
-
 function draw(){
   for(var i = 0; i < touches.length; i ++){
     cx = touches[i].x;
@@ -234,10 +184,17 @@ function draw(){
 
   console.log(cx, cy)
 
-  if(mousePressedOver(mc) || cx > 426 && cx < 617 && cy > 1125 && cy < 1316){
-    background("yellow")
-    listen();
-  };
+  // if(mousePressedOver(mc)){
+  //   background("yellow")
+  //   listen();
+  // };
 
  drawSprites();
 };
+
+function touchStarted(){
+  if(mousePressedOver(mc)){
+    background("yellow")
+    listen();
+  }
+}
