@@ -178,12 +178,6 @@ function draw(){
     cy = touches[i].y;
   }
 
-  console.log(width, height)
-
-  console.log(mc.x, mc.y)
-
-  console.log(cx, cy)
-
   if(mousePressedOver(mc)){
     background("yellow")
     listen();
