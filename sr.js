@@ -1,4 +1,4 @@
-var mcImage, mc, cx, cy,transcript, transcript1, dots, dot, logoimg, database, user, userName;
+var mcImage, mc, cx, cy,transcript, transcript1, dots, dot, logoimg, database, allUsers, users;
 function preload(){
   mcImage = loadImage("mc.gif");
   dot = loadImage("dot7.png");
@@ -17,30 +17,7 @@ function setup(){
   textStyle(BOLD)
   image(logoimg, width/2 - 250, 0);
 
-  // getTheName = new Name();
-  // getTheName.start();
-
-  // var recognition1 = new window.webkitSpeechRecognition();
-
-  // recognition1.onstart = function() {
-  //   console.log("Voice recognition started. Try speaking into the microphone.");
-  // };
-
-  // recognition1.onresult = function(think) {
-  //   var transcript1 = think.results[0][0].transcript;
-  //   console.log(transcript1);
-
-  //   textSize(30);
-  //   textStyle(BOLD);
-  //   fill("black");
-  //   textFont("Sans-serif");
-  //   textAlign(CENTER);
-  //   if(transcript1 === "hai"){
-  //     transcript1 = "hi";
-  //   };
-  // }
-
-  // recognition1.start();
+  users = new Update;
 };
 
 function listen(){
@@ -156,6 +133,26 @@ function listen(){
         window.speechSynthesis.speak(response);
         text("Me: " + response.text, width/2, height/2 + 300);
       };
+
+      if(transcript.includes("search for ")){
+        transcript = transcript.split("search for");
+
+        url = 'https://www.google.com/search?q=' + transcript;
+
+        response.rate = 1;
+        response.text = "Sure thing, searching for " + transcript;
+        response.lang = 'en';
+        window.speechSynthesis.speak(response);
+        text("Me: " + response.text, width/2, height/2 + 300);
+
+        window.open(url, "_blank");
+      }
+
+      // if(transcript.includes("change my name to")){
+      //   transcript = transcript.split("change my name to ");
+
+      //   users.update();
+      // }
 
       mc.addImage(mcImage);
       mc.x = width/2 - 45
