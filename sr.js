@@ -146,12 +146,6 @@ function listen(){
         window.open(url, "_blank");
       }
 
-      // if(transcript.includes("change my name to")){
-      //   transcript = transcript.split("change my name to ");
-
-      //   users.update();
-      // }
-
       mc.addImage(mcImage);
       mc.x = width/2 - 45
     };
