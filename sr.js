@@ -16,8 +16,6 @@ function setup(){
   fill("black");
   textStyle(BOLD)
   image(logoimg, width/2 - 250, 0);
-
-  users = new Update;
 };
 
 function listen(){
